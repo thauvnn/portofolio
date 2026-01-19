@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Frontend Developer</title>
+
+  <!-- ================= CSS ================= -->
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --bg: #f9f9f9;
+      --text: #222;
+      --card: #ffffff;
+      --accent: #0077ff;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #eaeaea;
+      --card: #1e1e1e;
+      --accent: #4da3ff;
+    }
+
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: sticky;
+      top: 0;
+      background: var(--card);
+      border-bottom: 1px solid #0001;
+      z-index: 10;
+    }
+
+    .nav {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-list {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-list a {
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .theme-toggle,
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+    }
+
+    .hero span {
+      color: var(--accent);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-bar {
+      background: #9993;
+      height: 8px;
+      margin-top: 0.5rem;
+    }
+
+    .skill {
+      height: 100%;
+    }
+
+    .html { width: 90%; background: #e34c26; }
+    .css  { width: 85%; background: #264de4; }
+    .js   { width: 75%; background: #f0db4f; }
+    .git  { width: 70%; background: #555; }
+
+    /* ===== PROJECTS ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 6px;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-list {
+      list-style: none;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--card);
+    }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-list {
+        position: absolute;
+        top: 64px;
+        right: 0;
+        background: var(--card);
+        flex-direction: column;
+        width: 200px;
+        padding: 1rem;
+        display: none;
+      }
+
+      .nav-list.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <nav class="nav container">
+      <h1>THAUVANN</h1>
+
+      <button class="hamburger" id="hamburger">☰</button>
+
+      <ul class="nav-list" id="nav-list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle">🌙</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero container reveal">
+    <div>
+      <h2>Hello, I'm <span>Muhammad Thauvan</span></h2>
+      <p>Frontend Developer – Begineer</p>
+      <a href="#projects" class="btn-primary">View Projects</a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section container reveal">
+    <h3 class="section-title">About Me</h3>
+    <p>Frontend developer level menengah fokus fundamental dan best practice.</p>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section container reveal">
+    <h3 class="section-title">Skills</h3>
+    <div class="skills-grid">
+      <div>HTML<div class="skill-bar"><div class="skill html"></div></div></div>
+      <div>CSS<div class="skill-bar"><div class="skill css"></div></div></div>
+      <div>JavaScript<div class="skill-bar"><div class="skill js"></div></div></div>
+      <div>Git<div class="skill-bar"><div class="skill git"></div></div></div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section container reveal">
+    <h3 class="section-title">Projects</h3>
+    <div class="projects-grid">
+      <div class="project-card">Project One</div>
+      <div class="project-card">Project Two</div>
+      <div class="project-card">Project Three</div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section container reveal">
+    <h3 class="section-title">Contact</h3>
+    <ul class="contact-list">
+      <li href="mailto:mthauvann@gmail.com">Email: mthauvann@gmail.com</li>
+      <li href="https://github.com/thauvnn">GitHub: github.com/thauvnn</li>
+    </ul>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>&copy; 2026 THAUVAN</p>
+  </footer>
+
+  <!-- ================= JS ================= -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      /* DARK MODE */
+      const toggle = document.getElementById("theme-toggle");
+      const body = document.body;
+
+      if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark");
+      }
+
+      toggle.addEventListener("click", () => {
+        body.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          body.classList.contains("dark") ? "dark" : "light"
+        );
+      });
+
+      /* HAMBURGER */
+      const hamburger = document.getElementById("hamburger");
+      const navList = document.getElementById("nav-list");
+
+      hamburger.addEventListener("click", () => {
+        navList.classList.toggle("show");
+      });
+
+      /* SCROLL REVEAL */
+      const reveals = document.querySelectorAll(".reveal");
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      reveals.forEach(el => observer.observe(el));
+    });
+  </script>
+
+</body>
+</html>
